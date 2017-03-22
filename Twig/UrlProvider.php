@@ -33,13 +33,14 @@ class UrlProvider extends \Twig_Extension
     }
 
     /**
-     * @param File $file
+     * @param $file
      * @param string|null $mutation
      * @param int|null $ttl
      * @return string
      */
-    public function generateFileUrl(File $file, $mutation = null, $ttl = null)
+    public function generateFileUrl($file, $mutation = null, $ttl = null)
     {
+        $file = $this->normalizeFile($file);
         $predefinedMutation = $file->getFileMutation();
 
         if ($predefinedMutation !== null) {
@@ -77,6 +78,36 @@ class UrlProvider extends \Twig_Extension
         } else {
             return  $this->api->getPublicMutatedUrl($file, $mutation, $ttl);
         }
+    }
+
+    /**
+     * @param $file
+     * @return File
+     * @throws \Exception
+     */
+    private function normalizeFile($file)
+    {
+        if ($file instanceof File) {
+            return $file;
+        }
+
+        if (is_array($file)) {
+            if (array_key_exists('fileIdentifier', $file) === false ||
+                array_key_exists('fileStorageName', $file) === false ||
+                array_key_exists('fileMutation', $file) === false) {
+
+                $newFile = new File();
+                $newFile->setFile(
+                    $file['fileIdentifier'],
+                    $file['fileStorageName'],
+                    $file['fileMutation']
+                );
+
+                return $file;
+            }
+        }
+
+        throw new \Exception('Invalid file given');
     }
 
     /**
