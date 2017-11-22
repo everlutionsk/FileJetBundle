@@ -20,19 +20,19 @@ services:
             - '@everlution.file.request_sender.curl.ci_rest_client'
 
     everlution.file.request_sender.curl.ci_rest_client:
-        class: Ci\RestClientBundle\Services\RestClient
+        class: Circle\RestClientBundle\Services\RestClient
         public: false
         arguments:
             - '@everlution.file.request_sender.curl.ci_curl'
 
     everlution.file.request_sender.curl.ci_curl:
-        class: Ci\RestClientBundle\Services\Curl
+        class: Circle\RestClientBundle\Services\Curl
         public: false
         arguments:
             - '@everlution.file.request_sender.curl.ci_options_handler'
 
     everlution.file.request_sender.curl.ci_options_handler:
-        class: Ci\RestClientBundle\Services\CurlOptionsHandler
+        class: Circle\RestClientBundle\Services\CurlOptionsHandler
         public: false
         arguments:
             - []
