@@ -2,8 +2,8 @@
 
 namespace Everlution\FileJetBundle\Http\RequestSender;
 
-use Ci\RestClientBundle\Exceptions\CouldntConnectException;
-use Ci\RestClientBundle\Services\RestInterface;
+use Circle\RestClientBundle\Exceptions\CouldntConnectException;
+use Circle\RestClientBundle\Services\RestInterface;
 use Everlution\FileJetBundle\Http\Response\Response;
 use Everlution\FileJetBundle\Http\Response\ImmutableResponse;
 use Everlution\FileJetBundle\Http\Request\Request;
