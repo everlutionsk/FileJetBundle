@@ -32,6 +32,14 @@ everlution_file_jet:
       name: <CUSTOM_LOCAL_NAME>
 ```
 
+### Clear bundle's cache
+
+When you have any problems which may be related to persisted cache try to remove it by running following command
+
+```bash
+bin/console doctrine:cache:clear everlution.file.cache
+```
+
 # Usage
 
 See example directory.
