@@ -66,20 +66,8 @@ services:
     # URL PROVIDER
     everlution.file.url_provider:
         class: Everlution\FileJetBundle\Api\UrlProvider\LocalUrlProvider
-        factory: ['@everlution.file.local_url_provider.factory', create]
-
-    everlution.file.local_url_provider.factory:
-        class: Everlution\FileJetBundle\Api\UrlProvider\Factory\LocalUrlProviderFactory
-        arguments:
-            - '@everlution.file.cache'
-            - '@everlution.file.remote_url_provider'
-            - '@everlution.file.storages'
-
-    everlution.file.remote_url_provider:
-        class: Everlution\FileJetBundle\Api\UrlProvider\RemoteUrlProvider
         arguments:
             - '@everlution.file.storages'
-            - '@everlution.file.request_sender.rpc'
 
     everlution.file.url_provider.twig_extension:
         class: Everlution\FileJetBundle\Twig\UrlProvider

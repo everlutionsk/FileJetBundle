@@ -35,6 +35,8 @@ class RemoteRequestFormatProvider implements RequestFormatProvider
      */
     public function explicitUpload(UploadRequest $uploadRequest)
     {
+        // get rid of picoviny, create simple cURL request
+
         $relativePath = '/request-format/upload/explicit';
         $request = $this->createRequest($relativePath, $uploadRequest);
         return $this->fetchRequestFormat($request);

@@ -41,6 +41,8 @@ class RemoteManagement implements Management
         $request = new ImmutableRequest(Request::METHOD_DELETE, $path);
         $storageRequest = $this->toStorageRequest($request, $storage);
 
+        // change to CURL DELETE
+
         $this->requestSender->send($storageRequest);
     }
 }

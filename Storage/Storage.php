@@ -4,55 +4,40 @@ namespace Everlution\FileJetBundle\Storage;
 
 class Storage
 {
-    /** @var string */
-    protected $id;
+    private $id;
+    private $apiKey;
+    private $name;
+    private $publicUrl;
 
-    /** @var string */
-    protected $apiKey;
-
-    /** @var string */
-    protected $name;
-
-    /**
-     * @param string $id
-     * @param string $apiKey
-     * @param string $name
-     */
-    public function __construct($id, $apiKey, $name)
+    public function __construct(string $id, string $apiKey, string $name, string $publicUrl)
     {
         $this->id = $id;
         $this->apiKey = $apiKey;
         $this->name = $name;
+        $this->publicUrl = $publicUrl;
     }
 
-    /**
-     * @return string
-     */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
-    public function getApiUrl()
+    public function getPublicUrl(): string
+    {
+        return $this->publicUrl;
+    }
+
+    public function getApiUrl(): string
     {
         return 'https://sm.filejet.io/storage/v1';
     }
