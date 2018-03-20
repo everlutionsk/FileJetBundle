@@ -8,5 +8,5 @@ interface UrlProvider
 {
     public function getPublicUrl(IdentifiableFile $file): string;
 
-    public function getPublicMutatedUrl(IdentifiableFile $file, string $mutation, ?int $ttl): string;
+    public function getPublicMutatedUrl(IdentifiableFile $file, string $mutation, int $ttl = null): string;
 }
